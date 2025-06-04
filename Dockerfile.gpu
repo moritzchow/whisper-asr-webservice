@@ -40,7 +40,7 @@ COPY --from=swagger-ui /usr/share/nginx/html/swagger-ui.css swagger-ui-assets/sw
 COPY --from=swagger-ui /usr/share/nginx/html/swagger-ui-bundle.js swagger-ui-assets/swagger-ui-bundle.js
 
 RUN poetry install
-RUN $POETRY_VENV/bin/pip install torch==2.6.0+rocm torchaudio==2.6.0+rocm --index-url https://download.pytorch.org/whl/rocm6.2
+RUN $POETRY_VENV/bin/pip install torch==2.6.0+rocm torchaudio==2.6.0+rocm --index-url https://download.pytorch.org/whl/rocm6.2.4
 
 EXPOSE 9000
 
