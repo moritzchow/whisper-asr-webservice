@@ -2,7 +2,7 @@ FROM onerahmet/ffmpeg:n7.1 AS ffmpeg
 
 FROM swaggerapi/swagger-ui:v5.9.1 AS swagger-ui
 
-FROM rocm/dev-ubuntu-24.04
+FROM rocm/dev-ubuntu-22.04
 
 ENV PYTHON_VERSION=3.10
 
