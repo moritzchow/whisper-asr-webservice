@@ -24,7 +24,8 @@ RUN ln -s -f /usr/bin/python${PYTHON_VERSION} /usr/bin/python3 && \
 
 RUN python3 -m venv $POETRY_VENV \
     && $POETRY_VENV/bin/pip install -U pip setuptools \
-    && $POETRY_VENV/bin/pip install poetry==2.1.1
+    && $POETRY_VENV/bin/pip install poetry==2.1.1 \
+    && $POETRY_VENV/bin/pip install pytorch
 
 ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
@@ -41,7 +42,7 @@ COPY --from=swagger-ui /usr/share/nginx/html/swagger-ui.css swagger-ui-assets/sw
 COPY --from=swagger-ui /usr/share/nginx/html/swagger-ui-bundle.js swagger-ui-assets/swagger-ui-bundle.js
 
 RUN poetry install
-RUN $POETRY_VENV/bin/pip install torch==2.6.0+cu126 torchaudio==2.6.0+cu126 --index-url https://download.pytorch.org/whl/cu126
+RUN $POETRY_VENV/bin/pip install torch==2.6.0+rocm torchaudio==2.6.0+rocm --index-url https://download.pytorch.org/whl/rocm6.2
 
 EXPOSE 9000
 
